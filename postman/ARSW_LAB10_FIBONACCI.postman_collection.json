@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "ARSW Lab10 - Fibonacci Azure Function",
+    "description": "Petición POST a la Azure Function de Fibonacci. Se ejecuta de forma concurrente con run-concurrent.sh (varios procesos de Newman en paralelo).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Fibonacci nth",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('La respuesta es un número', function () {",
+              "    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+              "});",
+              "console.log('nth=' + pm.environment.get('nth') + ' -> ' + pm.response.text().length + ' dígitos en ' + pm.response.responseTime + ' ms');"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"nth\": {{nth}}\n}"
+        },
+        "url": {
+          "raw": "{{FUNCTION_URL}}/api/{{FUNCTION_NAME}}",
+          "host": ["{{FUNCTION_URL}}"],
+          "path": ["api", "{{FUNCTION_NAME}}"]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "arsw-lab10-load-test",
+  "private": true,
+  "description": "Pruebas de carga concurrentes con Newman para la Azure Function de Fibonacci",
+  "scripts": {
+    "load": "./run-concurrent.sh"
+  },
+  "devDependencies": {
+    "newman": "^6.2.1"
+  }
+}

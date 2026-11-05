@@ -4,8 +4,7 @@
 # Laboratorio 10 - Escalabilidad Serverless con Azure Functions
 
 **Integrantes:** 
-Julio Mayorquin
-Diego Patiño 
+Julio Mayorquin - Diego Patiño 
 ---
 
 ## Parte 0 - Entendiendo el escenario de calidad
